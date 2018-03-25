@@ -12,5 +12,16 @@
   },
   "author": "G2i",
   "license": "MIT",
-  "homepage": "https://github.com/g2i/backend-challenge#readme"
+  "homepage": "https://github.com/g2i/backend-challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "continuation-local-storage": "^3.2.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "mkdirp": "^0.5.1",
+    "path": "^0.12.7",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.1"
+  }
 }

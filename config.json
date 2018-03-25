@@ -1,0 +1,8 @@
+{
+    "SERVER_PORT": 5511,
+	"bodyLimit": "100kb",
+    "corsHeaders": ["Link"],
+
+    "LOGS_DIR_NAME": "logs",
+    "LOGS_FILE_NAME": "output.log"
+}
