@@ -1,6 +1,6 @@
 const request = require('request-promise');
 const config = require('../config.json');
-const docksDB = require('../db/docks/docks');
+const stationsDB = require('../db/stations/stations');
 const logger = require('../libs/logger');
 
 const requestOptions = {
@@ -9,17 +9,17 @@ const requestOptions = {
 };
 
 
-const saveDockInfo = dockInfo => {
-    dockInfo.date = new Date();
-    return docksDB.saveDockSnapshot(dockInfo);
+const saveStationSnapshot = stationInfo => {
+    stationInfo.date = new Date();
+    return stationsDB.saveStationSnapshot(stationInfo);
 };
 
 
 exports.loadAndSaveData = async () => {
     try {
-        let docksInfo = await request(requestOptions);
-        for(let dockInfo of docksInfo.features) {
-            await saveDockInfo(dockInfo);
+        let stationsInfo = await request(requestOptions);
+        for(let stationInfo of stationsInfo.features) {
+            await saveStationSnapshot(stationInfo);
         }
         logger.info("End loading Indego info: " + new Date());
     } catch(error) {
