@@ -4,20 +4,14 @@ const app = express();
 const cors = require('cors');
 const winston = require('winston');
 const bodyParser = require('body-parser');
+const schedule = require('node-schedule');
 const config = require('./config.json');
 const logger = require('./libs/logger');
 const utils = require('./libs/utils');
 const db = require('./db/db');
 
 
-// initialize logs folder
-utils.createFolder(config.LOGS_DIR_NAME);
-
-configExpress();
-runServer();
-
-
-function configExpress() {
+const configExpress = () => {
     app.server = http.createServer(app);
 
     // 3rd party middleware
@@ -46,10 +40,22 @@ function configExpress() {
 };
 
 
-async function runServer() {
+const scheduleLoadingData = () => {
+    const indegoConnector = require('./connectors/indego');
+    // schedule loading info every hour (minute 1);
+    var j = schedule.scheduleJob('1 * * * *', () => {
+        indegoConnector.loadAndSaveData();
+    });
+};
+
+
+const runServer = async () => {
     try {
         await db.initializeDB();
         logger.log("Server connected to DB");
+
+        // schedule loading data from connectors every hour
+        scheduleLoadingData();
 
         // start listening for requests
         app.server.listen(process.env.PORT || config.SERVER_PORT, () => {
@@ -60,3 +66,10 @@ async function runServer() {
         logger.error(error);
     }
 };
+
+
+// initialize logs folder
+utils.createFolder(config.LOGS_DIR_NAME);
+
+configExpress();
+runServer();

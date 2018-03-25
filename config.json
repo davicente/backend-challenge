@@ -10,5 +10,7 @@
     "corsHeaders": ["Link"],
 
     "LOGS_DIR_NAME": "logs",
-    "LOGS_FILE_NAME": "output.log"
+    "LOGS_FILE_NAME": "output.log",
+
+    "INDEGO_URL": "https://www.rideindego.com/stations/json/"
 }
