@@ -1,0 +1,25 @@
+{
+    "DB_USERNAME": "",
+    "DB_PASSWORD": "",
+    "DB_HOST": "localhost",
+    "DB_PORT": "27017",
+    "DB_NAME": "backend_challenge",
+
+    "SERVER_PORT": 5511,
+	"bodyLimit": "100kb",
+    "corsHeaders": ["Link"],
+
+    "LOGS_DIR_NAME": "logs",
+    "LOGS_FILE_NAME": "output.log",
+
+    "INDEGO_URL": "https://www.rideindego.com/stations/json/",
+
+    "OWM_API_KEY": "YOUR_API_KEY",
+    "OWM_API_URL": "https://api.openweathermap.org/data/2.5/weather",
+
+    "PHILADELPHIA_LON": "-75.16374",
+    "PHILADELPHIA_LAT": "39.95378",
+
+    "API_PATH": "/api",
+    "API_VERSION": "/v1"
+}

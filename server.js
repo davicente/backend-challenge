@@ -42,9 +42,11 @@ const configExpress = () => {
 
 const scheduleLoadingData = () => {
     const indegoConnector = require('./connectors/indego');
+    const OWMConnector = require('./connectors/OWM');
     // schedule loading info every hour (minute 1);
     var j = schedule.scheduleJob('1 * * * *', () => {
         indegoConnector.loadAndSaveData();
+        OWMConnector.loadAndSaveData();
     });
 };
 
