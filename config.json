@@ -1,4 +1,10 @@
 {
+    "DB_USERNAME": "",
+    "DB_PASSWORD": "",
+    "DB_HOST": "localhost",
+    "DB_PORT": "27017",
+    "DB_NAME": "backend_challenge",
+
     "SERVER_PORT": 5511,
 	"bodyLimit": "100kb",
     "corsHeaders": ["Link"],

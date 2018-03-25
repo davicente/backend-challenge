@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const config = require('./config.json');
 const logger = require('./libs/logger');
 const utils = require('./libs/utils');
+const db = require('./db/db');
 
 
 // initialize logs folder
@@ -47,6 +48,9 @@ function configExpress() {
 
 async function runServer() {
     try {
+        await db.initializeDB();
+        logger.log("Server connected to DB");
+
         // start listening for requests
         app.server.listen(process.env.PORT || config.SERVER_PORT, () => {
             logger.info(`Started on port ${app.server.address().port}`);
