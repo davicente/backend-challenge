@@ -1,0 +1,163 @@
+{
+	"id": "a032cfb2-b3c1-a0fb-d175-46e472d53ee3",
+	"name": "backend_challenge",
+	"description": "",
+	"order": [
+		"dcdb73d3-665e-7bf1-eb8b-57b9069b363a",
+		"ed255142-2919-35c0-f90e-ff0fd3af0754",
+		"fc5ccc7e-0f3a-9cd4-f117-5775a1603abb"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1522010790344,
+	"owner": "429652",
+	"public": false,
+	"requests": [
+		{
+			"id": "dcdb73d3-665e-7bf1-eb8b-57b9069b363a",
+			"headers": "Authorization: {{token}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}{{path}}/stations?at=2018-03-25T23:00:00",
+			"queryParams": [
+				{
+					"key": "at",
+					"value": "2018-03-25T23:00:00",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setGlobalVariable(\"toolId\", jsonData[0]._id);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522010900169,
+			"name": "Get stations snapshot",
+			"description": "",
+			"collectionId": "a032cfb2-b3c1-a0fb-d175-46e472d53ee3",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"Node.js\",\n\t\"websiteUrl\": \"https://nodejs.org\",\n\t\"imageUrl\": \"https://static.sinap.ps/blog/2014/Dec/nodejs_logo-1417834491072.png\"\n}"
+		},
+		{
+			"id": "ed255142-2919-35c0-f90e-ff0fd3af0754",
+			"headers": "Authorization: {{token}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}{{path}}/stations/3006?at=2018-03-25T23:05:00",
+			"queryParams": [
+				{
+					"key": "at",
+					"value": "2018-03-25T23:05:00",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setGlobalVariable(\"toolId\", jsonData[0]._id);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522016387377,
+			"name": "Get station snapshot at",
+			"description": "",
+			"collectionId": "a032cfb2-b3c1-a0fb-d175-46e472d53ee3",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"Node.js\",\n\t\"websiteUrl\": \"https://nodejs.org\",\n\t\"imageUrl\": \"https://static.sinap.ps/blog/2014/Dec/nodejs_logo-1417834491072.png\"\n}"
+		},
+		{
+			"id": "fc5ccc7e-0f3a-9cd4-f117-5775a1603abb",
+			"headers": "Authorization: {{token}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}{{path}}/stations/3006?from=2018-03-25T22:05:00&to=2018-03-25T23:10:00&frequency=daily",
+			"queryParams": [
+				{
+					"key": "from",
+					"value": "2018-03-25T22:05:00",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "to",
+					"value": "2018-03-25T23:10:00",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "frequency",
+					"value": "daily",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\r\npostman.setGlobalVariable(\"toolId\", jsonData[0]._id);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522075071750,
+			"name": "Get station snapshot in range",
+			"description": "",
+			"collectionId": "a032cfb2-b3c1-a0fb-d175-46e472d53ee3",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"Node.js\",\n\t\"websiteUrl\": \"https://nodejs.org\",\n\t\"imageUrl\": \"https://static.sinap.ps/blog/2014/Dec/nodejs_logo-1417834491072.png\"\n}"
+		}
+	]
+}
