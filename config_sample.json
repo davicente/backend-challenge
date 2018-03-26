@@ -21,5 +21,7 @@
     "PHILADELPHIA_LAT": "39.95378",
 
     "API_PATH": "/api",
-    "API_VERSION": "/v1"
+    "API_VERSION": "/v1",
+
+    "MAX_NUM_SNAPSHOTS_RESPONSE": 20
 }

@@ -59,6 +59,10 @@ const runServer = async () => {
         // schedule loading data from connectors every hour
         scheduleLoadingData();
 
+        // api router
+        const api = require('./api/api');
+        app.use(config.API_PATH, api.initializeAPI(app));
+        
         // start listening for requests
         app.server.listen(process.env.PORT || config.SERVER_PORT, () => {
             logger.info(`Started on port ${app.server.address().port}`);
