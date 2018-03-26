@@ -17,6 +17,9 @@ exports.saveWeather = async weatherInfo => {
 };
 
 
+exports.remove = _id => weatherCollection.remove({_id});
+
+
 exports.getWeatherSnapshot = async at => {
     let weatherSnapshots = await weatherCollection.aggregate([
         // Get documents with date greater than at

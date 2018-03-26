@@ -4,7 +4,7 @@ const ISODate = require('mongodb').ISODate;
 const logger = require('../../libs/logger');
 const utilsDB = require('../db');
 
-const db = utilsDB.getDBConexion()
+const db = utilsDB.getDBConexion();
 const stationsCollection = db.collection('stations');
 logger.info('Collection stations');
 
@@ -17,6 +17,9 @@ exports.saveStationSnapshot = async stationData => {
     let result = await stationsCollection.insertOne(stationData, {w:1})
     return result.ops[0];
 };
+
+
+exports.remove = _id => stationsCollection.remove({_id});
 
 
 exports.getStationSnapshot = async (kioskId, at) => {
