@@ -7,7 +7,7 @@ const stationsDB = require('../../db/stations/stations');
 const weatherDB = require('../../db/weather/weather');
 
 
-exports.getSnapshotStationAt = async (kioskId, at) => {
+const getStationSnapshotAt = exports.getStationSnapshotAt = async (kioskId, at) => {
     const snapshot = await stationsDB.getStationSnapshot(kioskId, at);
     if(!snapshot) throw "Not station data available at " + at + " for kioskId " + kioskId;
     const weather = await weatherDB.getWeatherSnapshot(at);
@@ -19,7 +19,7 @@ exports.getSnapshotStationAt = async (kioskId, at) => {
 };
 
 
-const getSnapshotStations = exports.getSnapshotStations = async at => {
+const getStationsSnapshot = exports.getStationsSnapshot = async at => {
     const snapshots = await stationsDB.getStationsSnapshot(at);
     if(!snapshots) throw "Not stations data available at " + at;
     const weather = await weatherDB.getWeatherSnapshot(at);
@@ -31,7 +31,7 @@ const getSnapshotStations = exports.getSnapshotStations = async at => {
 };
 
 
-exports.getSnapshotsStationsRange = async (from, to, frequency) => {
+exports.getStationsSnapshotsRange = async (kioskId, from, to, frequency) => {
     let numSnapshots = 0;
     let numErrors = 0;
     let snapshots = [];
@@ -39,7 +39,7 @@ exports.getSnapshotsStationsRange = async (from, to, frequency) => {
 
     while((from < to) && (numSnapshots < config.MAX_NUM_SNAPSHOTS_RESPONSE) && (numErrors < 20)) {
         try {
-            snapshot = await getSnapshotStations(from);
+            snapshot = await getStationSnapshotAt(kioskId, from);
             //make sure snapshot is into range
             if(snapshot.at > to) {
                 break;
@@ -50,8 +50,7 @@ exports.getSnapshotsStationsRange = async (from, to, frequency) => {
             // set from to snapshot date, avoid problems in case some hour or day did not get any data from API
             from = new Date(snapshot.at);
         } catch(error) {
-            logger.debug("Error extracting snapshot in range");
-            logger.debug(error);
+            logger.silly("Not data for date: " + from);
         }
         from = getNextDateToRequest(from, frequency);
     }
